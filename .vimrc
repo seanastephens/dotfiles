@@ -12,9 +12,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'elzr/vim-json'
+
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_extra_conf_globlist = ['~/code/*','!~/*']
 let g:ycm_register_as_syntastic_checker = 0
+let g:ycm_always_populate_location_list = 1
 
 Plugin 'jelera/vim-javascript-syntax'
 
@@ -66,6 +69,7 @@ Plugin 'airblade/vim-gitgutter'
 
 Plugin 'tpope/vim-fugitive'
 
+Plugin 'wikitopian/hardmode'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -123,3 +127,8 @@ set relativenumber
 " tex auto-compile
 autocmd FileType tex :nnoremap <silent> :ww <Esc>:w<CR>:!pdflatex "%" <CR><CR>:echo v:shell_error == 0 ? "tex compiled cleanly." : "Houston, we have a problem."<CR>
 
+" shortcut
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+
+" shortcut to hard mode
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
