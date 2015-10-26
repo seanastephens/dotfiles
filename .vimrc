@@ -12,6 +12,14 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'nelstrom/vim-markdown-folding'
+
+Plugin 'millermedeiros/vim-esformatter'
+
 Plugin 'elzr/vim-json'
 
 Plugin 'Valloric/YouCompleteMe'
@@ -41,6 +49,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_c_include_dirs = ['src', 'test']
 let g:syntastic_c_compiler_options="-std=c99 -Wall -Werror -pedantic"
 let g:syntastic_c_check_header=1
+let g:syntastic_python_python_exe='python3'
 
 Plugin 'marijnh/tern_for_vim'
 
@@ -94,7 +103,6 @@ endif
 colorscheme distinguished
 
 " Tab garbage
-set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
@@ -132,3 +140,10 @@ autocmd FileType tex :nnoremap <silent> :ww <Esc>:w<CR>:!pdflatex "%" <CR><CR>:e
 
 " shortcut to hard mode
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+
+" play nice with eclim
+let g:EclimCompletionMethod = 'omnifunc'
+:nnoremap <Leader><space> <Esc>:JavaDocPreview<CR>
+:nnoremap <Leader>i <Esc>:JavaImport<CR>
+:nnoremap <Leader>r <Esc>:JavaRename 
+:nnoremap <Leader>c <Esc>:JavaCorrect<CR>
