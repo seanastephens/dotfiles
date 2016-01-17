@@ -24,7 +24,6 @@ Plugin 'elzr/vim-json'
 
 Plugin 'Valloric/YouCompleteMe'
 let g:ycm_extra_conf_globlist = ['~/code/*','!~/*']
-let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_always_populate_location_list = 1
 
 Plugin 'jelera/vim-javascript-syntax'
@@ -35,21 +34,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'Raimondi/delimitMate'
 imap <C-c> <CR><Esc>O
-
-Plugin 'scrooloose/syntastic'
-" default recommended options
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" gcc options
-let g:syntastic_c_include_dirs = ['src', 'test']
-let g:syntastic_c_compiler_options="-std=c99 -Wall -Werror -pedantic"
-let g:syntastic_c_check_header=1
-let g:syntastic_python_python_exe='python3'
 
 Plugin 'marijnh/tern_for_vim'
 
@@ -111,6 +95,7 @@ autocmd FileType javascript set shiftwidth=2 | set softtabstop=2 | set tabstop=2
 autocmd FileType html       set shiftwidth=2 | set softtabstop=2 | set tabstop=2
 autocmd FileType c          set shiftwidth=8 | set softtabstop=8 | set tabstop=8
 autocmd FileType make       set shiftwidth=8 | set softtabstop=8 | set tabstop=8 | set noexpandtab
+autocmd FileType python     set shiftwidth=4 | set softtabstop=4 | set tabstop=4 | set noexpandtab
 
 " Yes
 imap jj <Esc>
@@ -147,3 +132,9 @@ let g:EclimCompletionMethod = 'omnifunc'
 :nnoremap <Leader>i <Esc>:JavaImport<CR>
 :nnoremap <Leader>r <Esc>:JavaRename 
 :nnoremap <Leader>c <Esc>:JavaCorrect<CR>
+
+" Preview regex
+set incsearch hlsearch
+
+" YCM docs
+:nnoremap <Leader>i <Esc>:YcmCompleter GetDoc<CR>
