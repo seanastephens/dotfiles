@@ -79,9 +79,8 @@ filetype plugin indent on    " required
 " Enable 256 color terminal
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
+	colorscheme distinguished
 endif
-" colorscheme github
-colorscheme distinguished
 
 " Tab garbage
 set shiftwidth=4
