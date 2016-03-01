@@ -1,4 +1,4 @@
-dots=.vimrc
+dots=.vimrc .inputrc
 
 default: ${dots}
 	git pull
