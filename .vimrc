@@ -12,42 +12,43 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'editorconfig/editorconfig-vim'
-
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+
+Plugin 'lervag/vimtex'
+
 Plugin 'nelstrom/vim-markdown-folding'
 
-Plugin 'millermedeiros/vim-esformatter'
+Plugin 'Shougo/unite.vim'
 
-Plugin 'elzr/vim-json'
+" Dependency; reqiured for vim-syncopate.
+Plugin 'google/vim-maktaba'
+
+" Strongly recommended: easy configuration of maktaba plugins.
+Plugin 'google/vim-glaive'
+
+Plugin 'google/vim-syncopate'
+
+Plugin 'ternjs/tern_for_vim'
+let g:tern_show_argument_hints = 'on_move'
+let g:tern_is_show_argument_hints_enabled = 1
+let g:tern_show_signature_in_pum = 1
 
 Plugin 'Valloric/YouCompleteMe'
-let g:ycm_extra_conf_globlist = ['~/code/*','!~/*']
-let g:ycm_always_populate_location_list = 1
 
 Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'pangloss/vim-javascript'
 
+Plugin 'justinmk/vim-syntax-extra'
+
 Plugin 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=17
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=18
+
+Plugin 'ap/vim-css-color'
 
 Plugin 'Raimondi/delimitMate'
-imap <C-c> <CR><Esc>O
-
-Plugin 'marijnh/tern_for_vim'
-
-Plugin 'scrooloose/nerdtree'
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary")
-
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'bling/vim-airline'
 set laststatus=2
@@ -58,11 +59,6 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
-Plugin 'airblade/vim-gitgutter'
-
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'wikitopian/hardmode'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -84,6 +80,7 @@ filetype plugin indent on    " required
 if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
+" colorscheme github
 colorscheme distinguished
 
 " Tab garbage
@@ -95,7 +92,7 @@ autocmd FileType javascript set shiftwidth=2 | set softtabstop=2 | set tabstop=2
 autocmd FileType html       set shiftwidth=2 | set softtabstop=2 | set tabstop=2
 autocmd FileType c          set shiftwidth=8 | set softtabstop=8 | set tabstop=8
 autocmd FileType make       set shiftwidth=8 | set softtabstop=8 | set tabstop=8 | set noexpandtab
-autocmd FileType python     set shiftwidth=4 | set softtabstop=4 | set tabstop=4 | set noexpandtab
+autocmd FileType python     set shiftwidth=4 | set softtabstop=4 | set tabstop=4 | set expandtab
 
 " Yes
 imap jj <Esc>
@@ -117,14 +114,8 @@ imap <right> <nop>
 set number
 set relativenumber
 
-" tex auto-compile
-autocmd FileType tex :nnoremap <silent> :ww <Esc>:w<CR>:!pdflatex "%" <CR><CR>:echo v:shell_error == 0 ? "tex compiled cleanly." : "Houston, we have a problem."<CR>
-
 " shortcut
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
-
-" shortcut to hard mode
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 
 " play nice with eclim
 let g:EclimCompletionMethod = 'omnifunc'
