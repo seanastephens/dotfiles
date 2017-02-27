@@ -1,4 +1,4 @@
-dots=.vimrc .inputrc
+dots=.vimrc .inputrc .editorconfig
 
 default: ${dots}
 	git pull
