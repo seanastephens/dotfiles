@@ -89,3 +89,6 @@ set relativenumber
 
 " Preview regex
 set incsearch hlsearch
+
+" Since I don't always use bash
+set sh=bash
