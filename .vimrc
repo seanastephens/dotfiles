@@ -92,3 +92,11 @@ set incsearch hlsearch
 
 " Since I don't always use bash
 set sh=bash
+
+func! ElmFormat()
+  let l:winview=winsaveview()
+  :%!elm-format --stdin
+  call winrestview(l:winview)
+endf
+
+:autocmd BufWritePre *.elm :call ElmFormat()
