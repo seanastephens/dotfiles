@@ -43,6 +43,7 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'rust-lang/rust.vim'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'ycm-core/YouCompleteMe'
 let g:rustfmt_autosave = 1
 
 " All of your Plugins must be added before the following line
